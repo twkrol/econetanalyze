@@ -45,6 +45,42 @@ Obsługiwane źródła danych :
 - strumień sieciowy np. serial over telnet
 - port szeregowy (nie testowane)
 
+# Tips
+
+## Zamiana liczby zmiennoprzecinkowej na bajty
+Poszukując znaczenia danych możemy przeprowadzić analizę znanych wartości i wyszukiwać ich w ciągu bajtów. 
+Na przykład: wiemy że zadana temperatura to **23,2** stopni celsjusza. Aby odnaleźć tą wartość zamieńmy ją na zmienną 4-bajtową typu float przy pomocy pythona, w konsoli:
+```
+python
+import struct
+struct.pack('f',23.2)
+```
+W wyniku otrzymujemy ciąg bajtów:
+```
+b'\x9a\x99\xb9A'
+```
+Teraz szukamy w dekodowanym strumeniu ciągu wartości **9A 99 9A** i dość łatwo dowiemy się na jakiej pozycji w ramce występuje ta wartość.
+Uwaga: float to 4 bajty, więc możemy przetestować raz dobierając do analizy jeden bajt poprzedzający ciąg, a następnie bajt występujący po nim. Wyniki albo będą sensowne, albo pojawia się liczby nieużyteczne. W ten sposób ustalimy która czwórka bajtów jest właściwa.
+
+## Zamiana ciągu 4 bajtów na liczbę zmiennoprzecinkową typu float
+Na przykład: podejrzewamy, że ciąg bajtów **9A 99 B9 41** to liczba zmiennoprzecinkowa. Aby odczytać jej wartość dziesiętnie zamieńmy ją z ciągu 4-bajtów na liczbę typu float przy pomocy pythona, w konsoli:
+```
+python
+import struct
+struct.unpack('f',bytes([0x9A,0x99,0xB9,0x41]))
+```
+W wyniku otrzymujemy liczbę:
+```
+(23.200000762939453,)
+```
+Możemy również wpisać wartości dziesiętne:
+```
+struct.unpack('f',bytes([154,153,185,65]))
+```
+
+
+
+
 # Podziękowania
 Niniejszy analizator nie powstałby bez pomocy użytkowników z forum elektroda.pl: wątek https://www.elektroda.pl/rtvforum/topic3346727.html
 
