@@ -60,7 +60,7 @@ W wyniku otrzymujemy ciąg bajtów:
 b'\x9a\x99\xb9A'
 ```
 Teraz szukamy w dekodowanym strumeniu ciągu wartości **9A 99 9A** i dość łatwo dowiemy się na jakiej pozycji w ramce występuje ta wartość.
-Uwaga: float to 4 bajty, więc możemy przetestować raz dobierając do analizy jeden bajt poprzedzający ciąg, a następnie bajt występujący po nim. Wyniki albo będą sensowne, albo pojawia się liczby nieużyteczne. W ten sposób ustalimy która czwórka bajtów jest właściwa.
+Uwaga: float to 4 bajty, więc możemy przetestować raz dobierając do analizy jeden bajt poprzedzający ciąg, a następnie bajt występujący po nim. Wyniki albo będą sensowne, albo pojawią się liczby nieużyteczne. W ten sposób ustalimy która czwórka bajtów jest właściwa.
 
 ## Zamiana ciągu 4 bajtów na liczbę zmiennoprzecinkową typu float
 Na przykład: podejrzewamy, że ciąg bajtów **9A 99 B9 41** to liczba zmiennoprzecinkowa. Aby odczytać jej wartość dziesiętnie zamieńmy ją z ciągu 4-bajtów na liczbę typu float przy pomocy pythona, w konsoli:
