@@ -48,7 +48,7 @@ serialBAUDRATE = 115200
 RAMKA_START = 0x68
 RAMKA_STOP = 0x16
 NADAWCA_ECONET = 0x56
-NADAWCA_ECOMAX860P = 0x45     #piec pelletowy
+NADAWCA_ECOMAX = 0x45         #piec pelletowy
 NADAWCA_ECOSTER = 0x51        #panel dotykowy
 NADAWCA_TYP_ECONET = 0x30
 # ODBIORCA_BROADCAST = 0x00
@@ -125,7 +125,6 @@ while True:
       #badanie sumy kontrolnej CRC
       ramkaCRC = ramka[-2]
       myCRC = functools.reduce(lambda x,y: x^y, ramka[:-2])
-      # print(f"wyliczone CRC: {myCRC:02X}")
 
       #analizujemy ramkę tylko jak CRC się zgadza
       if myCRC == ramkaCRC:
@@ -165,7 +164,7 @@ while True:
           ecoster.parseFrame(message)
 
         #Analiza komunikatu ze sterownika pieca EcoMax
-        if ramka[ADRES_NADAWCY_BYTE] == NADAWCA_ECOMAX860P: 
+        if ramka[ADRES_NADAWCY_BYTE] == NADAWCA_ECOMAX: 
           ecomax.parseFrame(message)
 
 
