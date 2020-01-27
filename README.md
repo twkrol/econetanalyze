@@ -1,5 +1,5 @@
 # econetanalyze
-Analizator Econet - sterowniki firmy Plum
+Analizator Econet - do prześwietlania sterowników firmy Plum
 
 # Przeznaczenie
 Niniejszy analizator służy do dekodowania transmisji szeregowej pomiędzy sterownikami serii EcoNet firmy Plum na interfejsie RS485.
