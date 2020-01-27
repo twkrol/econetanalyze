@@ -161,12 +161,11 @@ while True:
 
 
         #Analiza komunikatu ze sterownika pokojowego ECOTouch
-        # if ramka[TYP_RAMKI] == RAMKA_INFO_PANELU and ramka[ADRES_NADAWCY_BYTE] == NADAWCA_ECOSTER: #and ramka[RECIPIENT_ADDRESS_BYTE]==ODBIORCA_BROADCAST:
         if ramka[ADRES_NADAWCY_BYTE] == NADAWCA_ECOSTER:
           ecoster.parseFrame(message)
 
         #Analiza komunikatu ze sterownika pieca EcoMax
-        if ramka[TYP_RAMKI] == RAMKA_INFO_STEROWNIKA and ramka[ADRES_NADAWCY_BYTE] == NADAWCA_ECOMAX860P: #and ramka[RECIPIENT_ADDRESS_BYTE]==ODBIORCA_BROADCAST:
+        if ramka[ADRES_NADAWCY_BYTE] == NADAWCA_ECOMAX860P: 
           ecomax.parseFrame(message)
 
 
