@@ -15,7 +15,7 @@ def parseFrame(message):
 
 # funkcja parsująca ramkę typu 0x08 sterownika EcoMax860P
 def parseFrame08(message):
-    #mapa komunikatu stanu ze sterownika pieco EcoMax860P
+    #mapa komunikatu stanu ze sterownika pieco EcoMax860P Lazar SmartFire
     # typ ramki = 0x08          #[0]
     OPERATING_STATUS_byte = 33  #[33]
     TEMP_CWU_float = 74         #[74-77]
@@ -57,7 +57,7 @@ def parseFrame08(message):
     FEEDER_TIME_short = 241     #[241-242]
     IGNITIONS_short = 243       #[243-244]
 
-    OPERATION_STATUSES = {0:'WYŁĄCZONY', 1:'ROZPALANIE', 2:'STABILIZACJA', 3:'PRACA', 4:'NADZÓR', 5:'WYGASZANIE', 7:'WYGASZANIE NA ŻĄDANIE'}
+    OPERATION_STATUSES = {0:'WYŁĄCZONY', 1:'ROZPALANIE', 2:'STABILIZACJA', 3:'PRACA', 4:'NADZÓR', 5:'WYGASZANIE', 7:'WYGASZANIE NA ŻĄDANIE', 9:'ALARM'}
 
     print("")
 
